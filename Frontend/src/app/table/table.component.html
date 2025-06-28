@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <td>First Name</td>
+      <td>Last Name</td>
+      <td>Email</td>
+      <td>Phone</td>
+      <td>Age</td>
+      <td>Password</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of data">
+      <td>{{ user.firstname }}</td>
+      <td>{{ user.lastname }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.phone }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.password }}</td>
+      <td><button (click)="openEditPopup(user)">Update</button></td>
+      <td><button (click)="deleteData(user.email)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<app-modal
+  *ngIf="showModal"
+  [user]="selectedUser"
+  (close)="closePopup()"
+  (save)="updateUser($event)"
+></app-modal>
+
